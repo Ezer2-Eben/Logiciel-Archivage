@@ -9,7 +9,7 @@ class Document extends Model
     protected $fillable = [
         'title',
         'content', 
-        'status',
+        'etat',        // ✅ Correct
         'category_id',
         'user_id'
     ];
@@ -23,18 +23,22 @@ class Document extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
     public function files()
     {
         return $this->hasMany(File::class);
     }
+
     public function audits()
     {
         return $this->hasMany(Audit::class);
     }
+
     public function logs()
     {
         return $this->hasMany(Log::class);
